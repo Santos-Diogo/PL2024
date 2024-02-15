@@ -15,12 +15,12 @@ def setEscalao (escaloes, idade):
 def main ():
     modalidades= set()
     escaloes= {}
-    aptos= 0;
-    todos= 0;
+    aptos= 0
+    todos= 0
     
     header= sys.stdin.readline()
     for line in sys.stdin:
-        tokens= line.split(",")
+        tokens= line.strip().split(",")
         todos+= 1   
 
         i= 0
@@ -29,10 +29,8 @@ def main ():
                 setEscalao (escaloes, int(token)) 
             elif (i== 8):
                 modalidades.add(token)
-            elif (i== 12):
-                if (token== 'true'):
-                    print (token)
-                    aptos+= 1
+            elif i== 12 and token== 'true':
+                aptos+= 1
             i+=1
 
     modalidadesL= list(modalidades)
@@ -41,6 +39,8 @@ def main ():
     print (modalidadesL)
     print ("\nPorcentagem de atletas aptos:")
     porcentagem= aptos/ todos* 100
+    print (todos)
+    print (aptos)
     print (porcentagem)
     print ("\nDistribuicao por escaloes:")
     print (escaloes)
